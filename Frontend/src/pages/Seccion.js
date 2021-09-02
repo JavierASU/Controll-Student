@@ -42,7 +42,7 @@ export default class Secciones extends Component {
     e.preventDefault();
     await axios.post("http://localhost:4000/seccion", {
       seccion: this.state.seccion,
-      grados: this.state.grado,
+      grado_id: this.state.grado,
     });
     //establece el input a estado 0
     this.setState({ seccion: ""});
@@ -89,7 +89,7 @@ export default class Secciones extends Component {
 
                     {this.state.grados.length ? (
                       this.state.grados.map((g) => (
-                        <option key={g.id_grado} value={g.id_grado}>
+                        <option key={g.grado_id} value={g.grado_id}>
                           {g.grado}
                         </option>
                       ))
@@ -111,7 +111,8 @@ export default class Secciones extends Component {
                 <Table>
                   <thead>
                     <tr>
-                      <th>Grados y Años</th>
+                      <th>Seccion</th>
+                      <th>Grado</th>
                       <th>Opciones</th>
                     </tr>
                   </thead>
@@ -119,8 +120,10 @@ export default class Secciones extends Component {
                     {this.state.secciones.length ? (
                       this.state.secciones.map((seccion) => {
                         return (
-                          <tr key={seccion.id_seccion}>
+                          <tr key={seccion.seccion_id}>
                             <td>{seccion.seccion}</td>
+                            <td>{seccion.grado}</td>
+
                             <td>
                               <button
                                 className="btn btn-outline-danger"

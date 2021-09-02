@@ -4,11 +4,9 @@ import axios from "axios";
 
 export default class Alumno extends Component {
   state = {
-    seccionesSL: [],
-    gradosSL: [],
-    seccionesSelect: "",
-    secciones:[],
-    gradosSelect: "",
+    allSecciones: [],
+    grados: [],
+    seccionesPorGrado: [],
 
     cedula: "",
     primerN: "",
@@ -17,6 +15,7 @@ export default class Alumno extends Component {
     segundoA: "",
     sexo: "",
     fechaDN: "",
+    seccion_id: "",
   };
 
   async componentDidMount() {
@@ -26,8 +25,8 @@ export default class Alumno extends Component {
     const grados = await axios.get(url2);
 
     this.setState({
-      seccionesSL: secciones.data,
-      gradosSL: grados.data,
+      allSecciones: secciones.data,
+      grados: grados.data,
     });
 
     // if (secciones.data.length >0) {
@@ -59,8 +58,7 @@ export default class Alumno extends Component {
       segundoA: this.state.segundoA,
       sexo: this.state.sexo,
       fechaDN: this.state.fechaDN,
-      grado: this.state.gradosSelect,
-      seccion: this.state.seccionesSelect,
+      seccion_id: this.state.seccion_id,
     };
     const res = await axios.post("http://localhost:4000/alumno", alumno);
     console.log(res);
@@ -75,11 +73,9 @@ export default class Alumno extends Component {
 
   onChangeGrado = async (e) => {
     let grado_id = e.target.value;
-    const secciones = this.state.seccionesSL.filter(
-      (s) => s.grados.grado_id === grado_id
-    );
-      this.setState({
-      secciones: secciones,
+   const secciones = this.state.allSecciones.filter(s=>parseInt(s.grado_id)===parseInt(grado_id));
+    this.setState({
+      seccionesPorGrado: secciones,
     });
   };
 
@@ -107,8 +103,8 @@ export default class Alumno extends Component {
                     >
                       <option value={null}>Seleccionar un grado..</option>
 
-                      {this.state.gradosSL.length ? (
-                        this.state.gradosSL.map((g) => (
+                      {this.state.grados.length ? (
+                        this.state.grados.map((g) => (
                           <option key={g.grado_id} value={g.grado_id}>
                             {g.grado}
                           </option>
@@ -123,12 +119,12 @@ export default class Alumno extends Component {
                     </h4>
                     <select
                       className="form-control"
-                      name="seccion"
+                      name="seccion_id"
                       onChange={this.onImputChange}
                     >
                       <option value={null}>Seleccionar una seccion..</option>
-                      {this.state.secciones.length ? (
-                        this.state.secciones.map((seccion) => (
+                      {this.state.seccionesPorGrado.length ? (
+                        this.state.seccionesPorGrado.map((seccion) => (
                           <option
                             key={seccion.seccion_id}
                             value={seccion.seccion_id}

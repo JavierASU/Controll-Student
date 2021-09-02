@@ -1,7 +1,7 @@
 const express = require('express');
 const cors = require('cors');
 const morgan = require("morgan")
-const { PostAL, GetALL, GetOne, DeleteAl, EditAL } = require('./controllers/alumnos');
+const { PostAL, GetALL, GetOne, DeleteAl, EditAL,GetForFilter } = require('./controllers/alumnos');
 const { GetALLS, GetOneS, PostALS, DeleteSC } = require("./controllers/seccion");
 const { GetALLG, GetOneG, PostALG, DeleteG } = require('./controllers/grados');
 const { GetALLM, GetOneM, PostM, DeleteM } = require('./controllers/materias');
@@ -25,6 +25,7 @@ app.use(GetALL);
 app.use(GetOne);
 app.use(DeleteAl);
 app.use(EditAL)
+app.use(GetForFilter)
 
 
 //routes seccion

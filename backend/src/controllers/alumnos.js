@@ -46,6 +46,28 @@ const GetOne = router.get("/alumno/:id", async (req, res) => {
   );
 });
 
+
+//Get por filtro de cedila
+const GetForFilter = router.get("/alumno/filtro/:cedula", async (req, res) => {
+  const { cedula } = req.params;
+
+  await pool.query(
+    `select alumno_id, cedula, primerN,segundoN, primerA,segundoA, sexo, fechaDN, seccion.seccion_id,seccion, grado.grado_id, grado from alumno
+    join seccion
+    on seccion.seccion_id=alumno.seccion_id
+    join grado
+    on grado.grado_id = seccion.grado_id
+    WHERE cedula like '${cedula}%'`,
+    (err, rows, fields) => {
+      if (!err) {
+        res.json(rows);
+      } else {
+        console.log(err);
+      }
+    }
+  );
+});
+
 //Post insert datos
 const PostAL = router.post("/alumno", async (req, res) => {
   const {
@@ -141,4 +163,4 @@ const EditAL = router.put("/alumno", async (req, res) => {
     }
   );
 });
-module.exports = { GetALL, PostAL, GetOne, DeleteAl, EditAL };
+module.exports = { GetALL, PostAL, GetOne, DeleteAl, EditAL,GetForFilter };
