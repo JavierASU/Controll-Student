@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { Switch, Route } from "react-router-dom";
-import Home from "./pages/Home";
+import Home from "./pages/Home"
 import Seccion from "./pages/Seccion";
 import Alumno from "./pages/Alumno";
 import Grados from "./pages/Grados";

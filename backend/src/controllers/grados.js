@@ -30,9 +30,11 @@ const GetOneG = router.get("/grados/:id", async (req, res) => {
 
 //Post insert datos 
 const PostALG = router.post("/grados", async (req, res) => {
-    const { grado_id, grado } = req.body;
+    const { 
+        //grado_id, 
+        grado } = req.body;
     const newG = {
-        grado_id,
+       // grado_id,
         grado
     };
     await pool.query("INSERT INTO grado set ?", [newG], (err, rows, fields) => {
