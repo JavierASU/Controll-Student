@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import { Switch, Route } from "react-router-dom";
 import Home from "./pages/Home"
 import Seccion from "./pages/Seccion";
-import Alumno from "./pages/Alumno";
+import Alumno from "./pages/Alumno"
 import Grados from "./pages/Grados";
 import Materias from "./pages/Materias";
 import Inf from "./pages/inf";
@@ -31,7 +31,7 @@ export default class App extends Component {
           <Route exact path="/" component={Home} />
           <Route exact path="/seccion" component={Seccion} />
           <Route exact path="/alumno" component={Alumno} />
-          <Route exact path= "/edit/:id" component={Alumno} />
+          <Route exact path= "/alumno/:id" component={Alumno} />
           <Route exact path="/grados" component={Grados} />
           <Route exact path="/materias" component={Materias} />
           <Route exact path="/inf" component={Inf} />

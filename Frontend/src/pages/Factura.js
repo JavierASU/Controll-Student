@@ -7,7 +7,8 @@ import {
   Table,
   Card,
   Button,
-  Link
+  Link,
+  FormLabel
 } from "react-bootstrap";
 import axios from "axios";
 
@@ -29,41 +30,60 @@ export default class Factura extends Component {
   render() {
     return (
       <div>
-        <Card>
-          <Container className="row justify-content-start clo-6 col-sm-3">
-            <h5>UNIDAD EDUCATIVA PRIVADA
-              TERESA CARREÑO, C.A.</h5>
-            Inscrito en el MPPE PD01370513
+        <Row>
+          <Col>
+            <Card.Header>
+              <Card.Body>
+                <Card>
+                  <Container>
+                    <Row>
+                      <Col><h10>UNIDAD EDUCATIVA PRIVADA
+                        TERESA CARREÑO, C.A.</h10><hr />Inscrito en el MPPE PD01370513 </Col>
+                      <Col><h10> Calle Piar 
+                        N°71-11-Centro 
+                        Cagua.Aragua 
+                        Telefono:0244-4140.8.6.3/RIF.J-40781620-4<hr /><h5>FACTURA N°0</h5>
+                      </h10></Col>
+                    </Row>
+                  </Container>
 
-            <h5> Calle Piar N°71-11-Centro Cagua.Aragua Telefono:0244-4140.8.6.3<hr /><h5>FACTURA N°0</h5>
-            </h5>
+                </Card>
 
-          </Container>
+                <Card>
+                  <Card.Body>
+                    <Container>
+                      <Form>
+                      <Row>
+                        <Col>Razon Social:</Col> 
+                        <Col>Datos que tiene que llenar con get alumno</Col>
+                        <Col>Fecha:</Col>
+                      </Row>
+                      <br></br>
+                      <br></br>
+                      <Row>
+                        <Col>Domicilo Fiscal:</Col>
+                        <Col>Rif/C.I.N°:</Col>
+                        <Col>Telefono:</Col>
+                      </Row>
+                      <br></br>
+                      <br></br>
+                      <Row>
+                        <Col>Inscripcion:</Col>
+                        <Col>Concepto:</Col>
+                        <Col>Monto:</Col>
+    
+                        
+                      </Row>
+                      </Form>
+                    </Container>
 
-        </Card>
-        <Container>
-          
-              <table class="table">
-                <thead>
-                  ...
-                </thead>
-                <tbody>
-                  <tr class="table-active">
-                    ...
-                  </tr>
-                  <tr>
-                    ...
-                  </tr>
-                  <tr>
-                    <th scope="row">3</th>
-                    <td colspan="2" class="table-active">Larry the Bird</td>
-                    <td>@twitter</td>
-                  </tr>
-                </tbody>
-              </table>
-            
-        
-        </Container>
+                  </Card.Body>
+                </Card>
+
+              </Card.Body>
+            </Card.Header>
+          </Col>
+        </Row>
       </div>
 
     )
@@ -72,6 +92,11 @@ export default class Factura extends Component {
 
 
 
+
+
+// por hacer front de filtrar alumnos 
+// facturacion
+// 
 
 
 

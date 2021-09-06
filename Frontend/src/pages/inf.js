@@ -49,6 +49,8 @@ export default class Secciones extends Component {
                       <th>Segundo Apellido</th>
                       <th>Sexo</th>
                       <th>Fecha</th>
+                      <th>Seccion</th>
+                      <th>Grado</th>
                       <th>Opciones</th>
                     </tr>
                   </thead>
@@ -58,14 +60,16 @@ export default class Secciones extends Component {
                         return (
                           <tr key={alumno._id}>
                             <td>{alumno.cedula}</td>
-                            <td>{alumno.PrimerNombre}</td>
-                            <td>{alumno.segundoNombre}</td>
-                            <td>{alumno.primerApellido}</td>
-                            <td>{alumno.segundoApellido}</td>
+                            <td>{alumno.primerN}</td>
+                            <td>{alumno.segundoN}</td>
+                            <td>{alumno.primerA}</td>
+                            <td>{alumno.segundoA}</td>
                             <td>{alumno.sexo}</td>
                             <td>{alumno.fechaDN}</td>
+                            <td>{alumno.seccion}</td>
+                            <td>{alumno.grado}</td>
                             <td>
-                                <a href={"/edit/"+ alumno._id} className="btn btn-warning">
+                                <a href={"/alumno/"+ alumno.alumno_id} className="btn btn-warning">
                                         Editar </a>
                               
                             </td>
@@ -74,8 +78,8 @@ export default class Secciones extends Component {
                       })
                     ) : (
                       <tr>
-                        <td colSpan="3" className="text-center">
-                          No hay secciones para el año seleccionado
+                        <td colSpan="8" className="text-center">
+                                No hay secciones para el año seleccionado
                         </td>
                       </tr>
                     )}
