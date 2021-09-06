@@ -19,6 +19,8 @@ export default class Secciones extends Component {
   async componentDidMount() {
     const res = await axios.get("http://localhost:4000/alumno");
     this.setState({ alumnos: res.data });
+
+    
   }
 
   render() {
