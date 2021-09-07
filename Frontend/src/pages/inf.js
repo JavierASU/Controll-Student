@@ -10,18 +10,43 @@ import {
   Link
 } from "react-bootstrap";
 import axios from "axios";
+import Alumno from "./Alumno";
 
 export default class Secciones extends Component {
   state = {
     alumnos: [],
+
+    
+    filtro:[],
+    search:""
+
   };
 
   async componentDidMount() {
     const res = await axios.get("http://localhost:4000/alumno");
     this.setState({ alumnos: res.data });
 
-    
+    const fill = await axios.get("http://localhost:4000/alumno/filtro/:cedula");
+    this.setState({filtro: fill.data});
   }
+
+
+
+  // filter=()=>{
+  //   const busq=alumnos.filter(item=>{
+  //     if(item.cedula.toString().includes(this.state.search)){
+  //       return item;
+  //     }
+      
+  //   })
+  // }
+
+  onImputChange = (e) => {
+    console.log(e.target.value);
+    this.setState({
+      [e.target.name]: e.target.value,
+    });
+  };
 
   render() {
     return (
@@ -31,7 +56,18 @@ export default class Secciones extends Component {
         <Container>
           <Row>
             <Form>
-              <Form.Control></Form.Control>
+              
+              <div className="form-search">
+                      <input
+                        type="text "
+                        className="form-control"
+                        value={this.state.search}
+                        placeholder="Busqueda"
+                        onChange={this.onImputChange}
+                        name="search"
+                      />
+                    </div>
+             
             </Form>
           </Row>
 

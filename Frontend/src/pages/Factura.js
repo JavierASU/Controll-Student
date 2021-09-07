@@ -94,9 +94,7 @@ export default class Factura extends Component {
 
 
 
-// por hacer front de filtrar alumnos 
-// facturacion
-// 
+
 
 
 
