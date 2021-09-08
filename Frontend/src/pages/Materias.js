@@ -85,12 +85,12 @@ export default class Materias extends Component {
                     {this.state.materias.length ? (
                       this.state.materias.map((materia) => {
                         return (
-                          <tr key={materia._id}>
-                            <td>{materia.materias}</td>
+                          <tr key={materia.materia_id}>
+                            <td>{materia.materia}</td>
                             <td>
                               <button
                                 className="btn btn-danger"
-                                onClick={() => this.deleteGrado(materia._id)}
+                                onClick={() => this.deleteGrado(materia.materia_id)}
                               >
                                 Eliminar
                               </button>

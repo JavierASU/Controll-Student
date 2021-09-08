@@ -23,14 +23,16 @@ export default class Secciones extends Component {
   };
 
   async componentDidMount() {
-    const res = await axios.get("http://localhost:4000/alumno");
-    this.setState({ alumnos: res.data });
-
+    this.getInf()
     const fill = await axios.get("http://localhost:4000/alumno/filtro/:cedula");
     this.setState({filtro: fill.data});
   }
 
+  getInf=async()=>{
+    const res = await axios.get("http://localhost:4000/alumno");
+    this.setState({ alumnos: res.data });
 
+  }
 
   // filter=()=>{
   //   const busq=alumnos.filter(item=>{
@@ -46,6 +48,12 @@ export default class Secciones extends Component {
     this.setState({
       [e.target.name]: e.target.value,
     });
+  };
+
+  deleteInf = async (id) => {
+    await axios.delete("http://localhost:4000/alumno/" + id);
+    this.getInf()
+    console.log(id);
   };
 
   render() {
@@ -107,9 +115,16 @@ export default class Secciones extends Component {
                             <td>{alumno.seccion}</td>
                             <td>{alumno.grado}</td>
                             <td>
-                                <a href={"/alumno/"+ alumno.alumno_id} className="btn btn-warning">
+                                <a href={"/alumno/"+ alumno.alumno_id} className="btn btn-outline-warning">
                                         Editar </a>
-                              
+                                        <button
+                                className="btn btn-outline-danger"
+                                onClick={() =>
+                                  this.deleteInf(alumno.alumno_id)
+                                }
+                              >
+                                Eliminar
+                              </button>
                             </td>
                           </tr>
                         );

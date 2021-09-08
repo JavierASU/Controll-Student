@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { Container, Col, Row, Form, Table, Card } from "react-bootstrap";
+import { Container, Col, Row, Form, Table, Card, Button, Modal } from "react-bootstrap";
 import axios from "axios";
 
 export default class Alumno extends Component {
@@ -16,6 +16,9 @@ export default class Alumno extends Component {
     sexo: "",
     fechaDN: "",
     seccion_id: "",
+
+    Open: false,
+
   };
 
   async componentDidMount() {
@@ -29,23 +32,6 @@ export default class Alumno extends Component {
       grados: grados.data,
     });
 
-    // if (secciones.data.length >0) {
-    //   this.setState({
-    //     seccionesSL: secciones.data.map(seccion => seccion.seccion),
-    //     seccionesSelect:secciones.data[0].seccion.seccion
-    //   })
-    //   console.log(this.state.seccionesSL)
-    //   console.log(this.state.seccionesSelect)
-    // }
-
-    // if(grados.data.length > 0){
-    //   this.setState({
-    //     gradosSL: grados.data.map(grados => grados.grado),
-    //     gradosSelect:grados.data[0].grado.grado
-    //   })
-    //   console.log(this.state.gradosSL)
-    //   console.log(this.state.gradosSelect)
-    // }
   }
 
   onSubmit = async (e) => {
@@ -59,9 +45,10 @@ export default class Alumno extends Component {
       sexo: this.state.sexo,
       fechaDN: this.state.fechaDN,
       seccion_id: this.state.seccion_id,
+
     };
     const res = await axios.post("http://localhost:4000/alumno", alumno);
-    console.log(res);
+    window.location.href = '/alumno'
   };
 
   onImputChange = (e) => {
@@ -73,11 +60,16 @@ export default class Alumno extends Component {
 
   onChangeGrado = async (e) => {
     let grado_id = e.target.value;
-   const secciones = this.state.allSecciones.filter(s=>parseInt(s.grado_id)===parseInt(grado_id));
+    const secciones = this.state.allSecciones.filter(s => parseInt(s.grado_id) === parseInt(grado_id));
     this.setState({
       seccionesPorGrado: secciones,
     });
   };
+
+  openModal = async () => {
+    this.setState({Open: !this.state.Open})
+    }
+
 
   render() {
     return (
@@ -210,10 +202,24 @@ export default class Alumno extends Component {
                         onChange={this.onImputChange}
                         name="fechaDN"
                       />
+                      <div className="d-grid gap-2">
 
-                      <button type="submit" className="btn btn-outline-success">
-                        Guardar
-                      </button>
+                        <Button variant="outline-success" onClick={this.openModal} size="lg" >
+                          Guardar
+                        </Button>
+                        <Modal show={this.state.Open} onHide={this.openModal}>
+                          <Modal.Header closeButton>
+                            <h2 className="text-danger">Seguro de los Datos?</h2>
+                          </Modal.Header>
+                          <Modal.Body>
+                            Hola perros
+                          </Modal.Body>
+                          <Modal.Footer>
+                            <Button variant="outline-success"onClick={this.onSubmit}>Guardar</Button>
+                            <Button variant="outline-danger" onClick={this.openModal} > Cancelar</Button>
+                          </Modal.Footer>
+                        </Modal>
+                      </div>
                     </div>
                   </Form>
                 </Card.Body>
@@ -225,3 +231,8 @@ export default class Alumno extends Component {
     );
   }
 }
+
+
+{/* <button type="submit" className="btn btn-outline-success">
+                        Guardar
+                      </button> */}
