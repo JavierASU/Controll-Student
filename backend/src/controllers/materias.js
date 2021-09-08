@@ -30,11 +30,8 @@ const GetOneM = router.get("/materias/:id", async (req, res) => {
 
 //Post insert datos 
 const PostM = router.post("/materias", async (req, res) => {
-    const { materia_id, materia } = req.body;
-    const newM = {
-        materia_id,
-        materia
-    };
+    const { materia } = req.body;
+    const newM = { materia };
     await pool.query("INSERT INTO materias set ?", [newM], (err, rows, fields) => {
         if (!err) {
             res.json("Data save");
@@ -50,7 +47,7 @@ const DeleteM = router.delete("/materias/:id", async (req, res) => {
     const { id } = req.params;
     pool.query("DELETE FROM materias WHERE materia_id =?", [id], (err, rows, fields) => {
         if (!err) {
-            res.json({ Grado: "Eliminado" });
+            res.json({ Materia: "Eliminado" });
 
         } else {
             console.log(err);

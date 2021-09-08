@@ -11,7 +11,7 @@ const GetALLG = router.get("/grados", (req, res) => {
         } else {
             console.log(err)
         }
-    }) 
+    })
 });
 
 //Get por ID
@@ -30,11 +30,9 @@ const GetOneG = router.get("/grados/:id", async (req, res) => {
 
 //Post insert datos 
 const PostALG = router.post("/grados", async (req, res) => {
-    const { 
-        //grado_id, 
+    const {
         grado } = req.body;
     const newG = {
-       // grado_id,
         grado
     };
     await pool.query("INSERT INTO grado set ?", [newG], (err, rows, fields) => {
