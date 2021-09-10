@@ -1,10 +1,13 @@
 const express = require('express');
 const cors = require('cors');
 const morgan = require("morgan")
-const { PostAL, GetALL, GetOne, DeleteAl, EditAL,GetForFilter } = require('./controllers/alumnos');
-const { GetALLS, GetOneS, PostALS, DeleteSC } = require("./controllers/seccion");
-const { GetALLG, GetOneG, PostALG, DeleteG } = require('./controllers/grados');
-const { GetALLM, GetOneM, PostM, DeleteM } = require('./controllers/materias');
+const { PostAL, GetALL, GetOne, DeleteAl, EditAL, GetForFilter } = require('./alum.controllers/alumnos');
+const { GetALLS, GetOneS, PostALS, DeleteSC } = require("./alum.controllers/seccion");
+const { GetALLG, GetOneG, PostALG, DeleteG } = require('./alum.controllers/grados');
+const { GetALLM, GetOneM, PostM, DeleteM } = require('./alum.controllers/materias');
+const { PostF } = require('./fact.controllers/facturacion');
+const { metod } = require('./fact.controllers/metod');
+const { PostC } = require('./fact.controllers/concepto');
 
 
 
@@ -48,6 +51,14 @@ app.use(GetOneM);
 app.use(PostM);
 app.use(DeleteM)
 
+//Facturacion
+app.use(PostF)
+
+//metod
+app.use(metod)
+
+//concep
+app.use(PostC)
 
 
 module.exports = app;

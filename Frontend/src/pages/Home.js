@@ -18,7 +18,7 @@ export default class Home extends Component {
                             <Card className="col-md-10 bg-dark ">
                                 <img src={IMG1} alt="" />
                                 <Card.Body>
-                                    <h4 className="card-tittle text-light">Secciones</h4>
+                                    <h4 className="card-tittle text-light">Gestion de Alumnos</h4>
                                     <p className="card-text text-secondary text-light">Podras ver y crear tus secciones creadas catidad de alumnos y datos</p>
                                     <div className="btn-group-vertical">
                                     <a href="/seccion" className="btn btn-outline-secondary text-light">
@@ -42,8 +42,7 @@ export default class Home extends Component {
                                     <p className="card-text text-secondary text-light">Podras ver la informacion de alumnos,secciones y grados</p>
                                     <a href="/inf" className="btn btn-outline-secondary text-light">
                                         Ir a Informacion </a>
-                                        <a href="/factura" className="btn btn-outline-secondary text-light">
-                                        Ir a Facturacion </a>
+                                        
                                    
                                 </Card.Body>
                             </Card>
@@ -53,8 +52,12 @@ export default class Home extends Component {
                             <Card className="col-md-10 bg-dark">
                                 <img src={IMG1} alt="" />
                                 <Card.Body>
-                                    <h4 className="card-tittle"></h4>
-                                    <p className="card-text text-secondary"></p>
+                                    <h4 className="card-tittle text-light">Gestion de Facturacion</h4>
+                                    <p className="card-text text-secondary text-light">Crear e Imprimir Facturas</p>
+                                    <a href="/Cfactura" className="btn btn-outline-secondary text-light">
+                                        Crear Facturacion </a>
+                                    <a href="/factura" className="btn btn-outline-secondary text-light">
+                                        Ir a Facturacion </a>
                                 </Card.Body>
                             </Card>
 

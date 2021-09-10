@@ -42,7 +42,7 @@ export default class Factura extends Component {
                       <Col><h10> Calle Piar 
                         N°71-11-Centro 
                         Cagua.Aragua 
-                        Telefono:0244-4140.8.6.3/RIF.J-40781620-4<hr /><h5>FACTURA N°0</h5>
+                        Telefono:0244-414.08.63/RIF.J-40781620-4<hr /><h5>FACTURA N°0</h5>
                       </h10></Col>
                     </Row>
                   </Container>

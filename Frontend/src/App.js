@@ -7,6 +7,7 @@ import Grados from "./pages/Grados";
 import Materias from "./pages/Materias";
 import Inf from "./pages/inf";
 import Factura from "./pages/Factura";
+import CFactura from "./pages/CFactura";
 
 import { Navbar, Container, Nav } from "react-bootstrap";
 
@@ -36,6 +37,7 @@ export default class App extends Component {
           <Route exact path="/materias" component={Materias} />
           <Route exact path="/inf" component={Inf} />
           <Route exact path="/factura"component={Factura}/>
+          <Route exact path="/Cfactura"component={CFactura}/>
         </Switch>
       </div>
     );
