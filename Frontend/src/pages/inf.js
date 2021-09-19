@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React, { Component, useState, useEffect } from "react";
 import {
   Container,
   Col,
@@ -7,41 +7,45 @@ import {
   Table,
   Card,
   Button,
-  Link
+  Link,
 } from "react-bootstrap";
 import axios from "axios";
-import Alumno from "./Alumno";
+
 
 export default class Secciones extends Component {
   state = {
     alumnos: [],
 
-    
-    filtro:[],
-    search:""
+
+    filtro: [],
+    search: ""
 
   };
 
   async componentDidMount() {
     this.getInf()
-    const fill = await axios.get("http://localhost:4000/alumno/filtro/:cedula");
-    this.setState({filtro: fill.data});
+    this.getFill()
+
   }
 
-  getInf=async()=>{
+  getInf = async () => {
     const res = await axios.get("http://localhost:4000/alumno");
     this.setState({ alumnos: res.data });
+    console.log(res.data);
 
   }
 
-  // filter=()=>{
-  //   const busq=alumnos.filter(item=>{
-  //     if(item.cedula.toString().includes(this.state.search)){
-  //       return item;
-  //     }
-      
-  //   })
-  // }
+  getFill = async (cedula) => {
+    const res = await axios.get("http://localhost:4000/alumno/filtro/" + cedula)
+    this.setState({ filtro: res.data })
+
+
+    console.log(res.data)
+  }
+
+
+
+
 
   onImputChange = (e) => {
     console.log(e.target.value);
@@ -64,18 +68,80 @@ export default class Secciones extends Component {
         <Container>
           <Row>
             <Form>
-              
+
               <div className="form-search">
-                      <input
-                        type="text "
-                        className="form-control"
-                        value={this.state.search}
-                        placeholder="Busqueda"
-                        onChange={this.onImputChange}
-                        name="search"
-                      />
-                    </div>
-             
+                <input
+                  type="text "
+                  className="form-control"
+                  value={this.state.search}
+                  placeholder="Busqueda"
+                  onChange={this.onImputChange}
+                  name="search"
+                />
+              </div>
+              <Row className="mt-4">
+                <Col>
+                  <Card>
+                    <Card.Header className="text-center">
+                      <h3>Datos</h3>
+                    </Card.Header>
+                    <Table>
+                      <thead>
+                        <tr>
+                          <th>cedula</th>
+                          <th>Primer Nombre</th>
+                          <th>Segundo Nombre</th>
+                          <th>Primer Apellido</th>
+                          <th>Segundo Apellido</th>
+                          <th>Sexo</th>
+                          <th>Fecha</th>
+                          <th>Seccion</th>
+                          <th>Grado</th>
+                          <th>Opciones</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        {this.state.filtro.length ? (
+                          this.state.filtro.filter((alumno) => {
+                            return (
+                              <tr key={alumno.cedula}>
+                                <td>{alumno.cedula}</td>
+                                <td>{alumno.primerN}</td>
+                                <td>{alumno.segundoN}</td>
+                                <td>{alumno.primerA}</td>
+                                <td>{alumno.segundoA}</td>
+                                <td>{alumno.sexo}</td>
+                                <td>{alumno.fechaDN}</td>
+                                <td>{alumno.seccion}</td>
+                                <td>{alumno.grado}</td>
+                                <td>
+                                  <a href={"/alumno/" + alumno.alumno_id} className="btn btn-outline-warning">
+                                    Editar </a>
+                                  <button
+                                    className="btn btn-outline-danger"
+                                    onClick={() =>
+                                      this.deleteInf(alumno.alumno_id)
+                                    }
+                                  >
+                                    Eliminar
+                                  </button>
+                                </td>
+                              </tr>
+                            );
+                          })
+                        ) : (
+                          <tr>
+                            <td colSpan="8" className="text-center">
+                              Realice la busqueda por cedula
+                            </td>
+                          </tr>
+                        )}
+                      </tbody>
+                    </Table>
+                  </Card>
+                </Col>
+              </Row>
+
             </Form>
           </Row>
 
@@ -115,9 +181,9 @@ export default class Secciones extends Component {
                             <td>{alumno.seccion}</td>
                             <td>{alumno.grado}</td>
                             <td>
-                                <a href={"/alumno/"+ alumno.alumno_id} className="btn btn-outline-warning">
-                                        Editar </a>
-                                        <button
+                              <a href={"/alumno/" + alumno.alumno_id} className="btn btn-outline-warning">
+                                Editar </a>
+                              <button
                                 className="btn btn-outline-danger"
                                 onClick={() =>
                                   this.deleteInf(alumno.alumno_id)
@@ -132,7 +198,7 @@ export default class Secciones extends Component {
                     ) : (
                       <tr>
                         <td colSpan="8" className="text-center">
-                                No hay secciones para el año seleccionado
+                          No hay secciones para el año seleccionado
                         </td>
                       </tr>
                     )}
