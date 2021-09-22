@@ -40,12 +40,8 @@ export default class Secciones extends Component {
     this.setState({ filtro: res.data })
 
 
-    console.log(res.data)
+    console.log(cedula)
   }
-
-
-
-
 
   onImputChange = (e) => {
     console.log(e.target.value);
@@ -77,6 +73,7 @@ export default class Secciones extends Component {
                   placeholder="Busqueda"
                   onChange={this.onImputChange}
                   name="search"
+                  
                 />
               </div>
               <Row className="mt-4">

@@ -71,17 +71,17 @@ export default class Secciones extends Component {
         <Container>
           <Row className="mt-4">
             <Col>
-              <Card>
+              <Card className="bg-dark Border-all">
                 <Form onSubmit={this.onSubmit}>
-                  <h3>Crear Seccion</h3>
+                  <h3 className="text-light">Crear Seccion</h3>
                   <input
                     type="text"
-                    className="from-control"
+                    className="from-control Border-all"
                     value={this.state.seccion}
                     onChange={this.onChangeSeccion}
                   ></input>
                   <select
-                    className="form-control mt-4 mb-4"
+                    className="form-control mt-4 mb-4 bg-dark text-light Border-all"
                     name="grado"
                     onChange={this.onImputChange}
                   >
@@ -106,14 +106,14 @@ export default class Secciones extends Component {
                   </button>
                 </Form>
                 <Card.Header className="text-center">
-                  <h3>Datos</h3>
+                  <h3 className="text-light">Datos</h3>
                 </Card.Header>
-                <Table>
+                <Table className="text-light">
                   <thead>
-                    <tr>
-                      <th>Seccion</th>
-                      <th>Grado</th>
-                      <th>Opciones</th>
+                    <tr >
+                      <th className="text-light">Seccion</th>
+                      <th className="text-light">Grado</th>
+                      <th className="text-light">Opciones</th>
                     </tr>
                   </thead>
                   <tbody>

@@ -1,4 +1,38 @@
- /* body{
-  background: rgb(0,0,0);
-background: linear-gradient(90deg, rgba(0,0,0,1) 0%, rgba(245,6,6,1) 50%, rgba(0,0,0,1) 100%);
- } */
+body {
+  background-image: url(./img/teresa\ carreño\ marcade\ agua.jpg);
+}
+
+.Card-Front {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 15px;
+  margin-bottom: 15px;
+  height: 200px;
+  box-shadow: 30px 20px 10px 0 black;
+  border-radius: 20px;
+}
+
+.Fond-Card {
+    box-shadow: 30px 20px 10px -10px black;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 15px;
+    margin-bottom: 15px;
+    height: 500px;
+    border-radius: 30px;
+}
+
+.Btn-card{
+    border-radius: 20px;
+    
+}
+
+.Border-all{
+    border-radius: 20px;
+}
+
+.Up-card{
+    margin-top: -30px;
+}
