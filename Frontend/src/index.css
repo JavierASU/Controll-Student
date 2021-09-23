@@ -11,6 +11,7 @@ body {
   height: 200px;
   box-shadow: 30px 20px 10px 0 black;
   border-radius: 20px;
+  
 }
 
 .Fond-Card {
@@ -44,24 +45,36 @@ body {
   margin-bottom: 15px;
   height: 300px;
   box-shadow: 0px 20px 100px -10px black;
+  border-radius:50px;
+  font-family: 'calibri';
 }
 
 .From-alumno{
-  width: 1000px;
-  background: #24303c;
+  width: 800px;
+  background: #9dd8f373;
   padding: -20px;
   margin: auto;
   margin-top: 20px;
   border-radius: 10px;
   font-family: 'calibri';
   color: rgb(0, 0, 0);
-  box-shadow: 7px 13px 37px #000;
+  box-shadow: 7px 13px 37px rgb(97, 86, 252);
 }
 
-/* .containe-card{
-  width: 2000px;
+.containe-card{
+  width: 600px;
   background: #ffffff;
   padding: -20px;
   margin: auto;
   margin-top: 20px;
-} */
+}
+
+.div-container{
+  border-radius: 25px;
+  
+}
+
+.fuente-fuente{
+  font-family: 'serif';
+  font-weight: 90;
+}

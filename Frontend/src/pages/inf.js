@@ -85,7 +85,7 @@ export default class Secciones extends Component {
                     <Table>
                       <thead>
                         <tr>
-                          <th>cedula</th>
+                          <th>Cedula</th>
                           <th>Primer Nombre</th>
                           <th>Segundo Nombre</th>
                           <th>Primer Apellido</th>
@@ -146,21 +146,21 @@ export default class Secciones extends Component {
             <Col>
               <Card>
                 <Card.Header className="text-center">
-                  <h3>Datos</h3>
+                  <h3 className="fuente-fuente">Datos</h3>
                 </Card.Header>
                 <Table>
                   <thead>
                     <tr>
-                      <th>cedula</th>
-                      <th>Primer Nombre</th>
-                      <th>Segundo Nombre</th>
-                      <th>Primer Apellido</th>
-                      <th>Segundo Apellido</th>
-                      <th>Sexo</th>
-                      <th>Fecha</th>
-                      <th>Seccion</th>
-                      <th>Grado</th>
-                      <th>Opciones</th>
+                      <th className="fuente-fuente">Cedula</th>
+                      <th className="fuente-fuente">Primer Nombre</th>
+                      <th className="fuente-fuente">Segundo Nombre</th>
+                      <th className="fuente-fuente">Primer Apellido</th>
+                      <th className="fuente-fuente">Segundo Apellido</th>
+                      <th className="fuente-fuente">Sexo</th>
+                      <th className="fuente-fuente">Fecha</th>
+                      <th className="fuente-fuente">Seccion</th>
+                      <th className="fuente-fuente">Grado</th>
+                      <th className="fuente-fuente">Opciones</th>
                     </tr>
                   </thead>
                   <tbody>
@@ -168,20 +168,20 @@ export default class Secciones extends Component {
                       this.state.alumnos.map((alumno) => {
                         return (
                           <tr key={alumno._id}>
-                            <td>{alumno.cedula}</td>
-                            <td>{alumno.primerN}</td>
-                            <td>{alumno.segundoN}</td>
-                            <td>{alumno.primerA}</td>
-                            <td>{alumno.segundoA}</td>
-                            <td>{alumno.sexo}</td>
-                            <td>{alumno.fechaDN}</td>
-                            <td>{alumno.seccion}</td>
-                            <td>{alumno.grado}</td>
+                            <td className="fuente-fuente">{alumno.cedula}</td>
+                            <td className="fuente-fuente">{alumno.primerN}</td>
+                            <td className="fuente-fuente">{alumno.segundoN}</td>
+                            <td className="fuente-fuente">{alumno.primerA}</td>
+                            <td className="fuente-fuente">{alumno.segundoA}</td>
+                            <td className="fuente-fuente">{alumno.sexo}</td>
+                            <td className="fuente-fuente">{alumno.fechaDN}</td>
+                            <td className="fuente-fuente">{alumno.seccion}</td>
+                            <td className="fuente-fuente">{alumno.grado}</td>
                             <td>
-                              <a href={"/alumno/" + alumno.alumno_id} className="btn btn-outline-warning">
+                              <a href={"/alumno/" + alumno.alumno_id} className="btn btn-outline-warning fuente-fuente">
                                 Editar </a>
                               <button
-                                className="btn btn-outline-danger"
+                                className="btn btn-outline-danger fuente-fuente"
                                 onClick={() =>
                                   this.deleteInf(alumno.alumno_id)
                                 }
@@ -194,7 +194,7 @@ export default class Secciones extends Component {
                       })
                     ) : (
                       <tr>
-                        <td colSpan="8" className="text-center">
+                        <td colSpan="8" className="text-center fuente-fuente">
                           No hay secciones para el año seleccionado
                         </td>
                       </tr>

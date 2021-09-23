@@ -75,21 +75,21 @@ export default class Alumno extends Component {
     return (
       <div >
         <Container className="From-alumno">
-          <h1 className="text-black text-center">Menu de Alumnos</h1>
+          <h1 className="text-black text-center fuente-fuente">Menu de Alumnos</h1>
 
           <Row className="mt-4 ">
             <Col>
-              <Card >
-                <Card.Header className="text-center">
+              <Card className="card-card" >
+                <Card.Header className="text-center fuente-fuente">
                   <h3>Crear Nuevo Alumno</h3>
                 </Card.Header>
                 <Card.Body className="containe-card">
                   <Form onSubmit={this.onSubmit}>
-                    <h4 className="text-balck text-center">
-                      Seleccione una Grado
+                    <h4 className="text-balck text-center fuente-fuente">
+                      Seleccione un Grado
                     </h4>
                     <select
-                      className="form-control"
+                      className="form-control div-container fuente-fuente"
                       name="grado"
                       onChange={this.onChangeGrado}
                     >
@@ -106,11 +106,11 @@ export default class Alumno extends Component {
                       )}
                     </select>
 
-                    <h4 className="text-balck text-center">
+                    <h4 className="text-balck text-center fuente-fuente">
                       Seleccione una Seccion
                     </h4>
                     <select
-                      className="form-control"
+                      className="form-control div-container fuente-fuente"
                       name="seccion_id"
                       onChange={this.onImputChange}
                     >
@@ -135,7 +135,7 @@ export default class Alumno extends Component {
                     <div className="form group">
                       <input
                         type="text "
-                        className="form-control"
+                        className="form-control div-container fuente-fuente"
                         value={this.state.cedula}
                         placeholder="cedula"
                         onChange={this.onImputChange}
@@ -146,7 +146,7 @@ export default class Alumno extends Component {
                       <input
                         type="text"
                         value={this.state.primerN}
-                        className="form-control"
+                        className="form-control div-container fuente-fuente"
                         placeholder="Primer Nombre"
                         onChange={this.onImputChange}
                         name="primerN"
@@ -156,7 +156,7 @@ export default class Alumno extends Component {
                       <input
                         type="text"
                         vale={this.state.segundoN}
-                        className="form-control"
+                        className="form-control div-container fuente-fuente"
                         placeholder="Segundo Nombre"
                         onChange={this.onImputChange}
                         name="segundoN"
@@ -166,7 +166,7 @@ export default class Alumno extends Component {
                       <input
                         type="text"
                         value={this.state.primerA}
-                        className="form-control"
+                        className="form-control div-container fuente-fuente"
                         placeholder="Primer Apellido"
                         onChange={this.onImputChange}
                         name="primerA"
@@ -177,7 +177,7 @@ export default class Alumno extends Component {
                       <input
                         type="text"
                         value={this.state.segundoA}
-                        className="form-control"
+                        className="form-control div-container fuente-fuente"
                         placeholder="Segundo Apellido"
                         onChange={this.onImputChange}
                         name="segundoA"
@@ -187,7 +187,7 @@ export default class Alumno extends Component {
                       <input
                         type="text"
                         value={this.state.sexo}
-                        className="form-control"
+                        className="form-control div-container fuente-fuente"
                         placeholder="Sexo"
                         onChange={this.onImputChange}
                         name="sexo"
@@ -197,26 +197,27 @@ export default class Alumno extends Component {
                       <input
                         type="text"
                         value={this.state.fechaDN}
-                        className="form-control"
+                        className="form-control div-container fuente-fuente"
                         placeholder="Fecha"
                         onChange={this.onImputChange}
                         name="fechaDN"
                       />
                       <div className="d-grid gap-2">
 
-                        <Button variant="outline-success" onClick={this.openModal} size="lg" >
+                        <Button variant="outline-success div-container fuente-fuente" onClick={this.openModal} size="lg" >
                           Guardar
                         </Button>
                         <Modal show={this.state.Open} onHide={this.openModal} className="modal-style">
                           <Modal.Header closeButton >
-                            <h2 className="text-danger">Seguro de los Datos?</h2>
+                            <h2 className="text-danger fuente-fuente">CONFIRMACION DE DATOS</h2>
                           </Modal.Header>
-                          <Modal.Body>
-                            Hola perros
+                          <Modal.Body className="fuente-fuente Border-all">
+                            UNA VES CREADO EL ESTUDIANTE LOS DATOS SERAN GUARDADOS, SI HUBO ERROR DEBERAR BORRAR
+                            Y CREAR DE NUEVO EL ESTUDIANTE.
                           </Modal.Body>
                           <Modal.Footer>
-                            <Button variant="outline-success"onClick={this.onSubmit}>Guardar</Button>
-                            <Button variant="outline-danger" onClick={this.openModal} > Cancelar</Button>
+                            <Button variant="outline-success fuente-fuente"onClick={this.onSubmit}>Guardar</Button>
+                            <Button variant="outline-danger fuente-fuente" onClick={this.openModal} > Cancelar</Button>
                           </Modal.Footer>
                         </Modal>
                       </div>

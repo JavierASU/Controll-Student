@@ -17,11 +17,11 @@ export default class App extends Component {
       <div className="App">
         <Navbar bg="dark" variant="dark" expand="lg">
           <Container>
-            <Navbar.Brand href="#home">Control de Alumnos</Navbar.Brand>
+            <Navbar.Brand href="#home" className="fuente-fuente">Control de Alumnos</Navbar.Brand>
             <Navbar.Toggle aria-controls="basic-navbar-nav" />
             <Navbar.Collapse id="basic-navbar-nav">
               <Nav className="me-auto">
-                <Nav.Link href="/">Volver</Nav.Link>
+                <Nav.Link href="/" className="fuente-fuente">Volver</Nav.Link>
 
               </Nav>
             </Navbar.Collapse>
