@@ -14,25 +14,54 @@ body {
 }
 
 .Fond-Card {
-    box-shadow: 30px 20px 10px -10px black;
-    display: block;
-    margin-left: auto;
-    margin-right: auto;
-    margin-top: 15px;
-    margin-bottom: 15px;
-    height: 500px;
-    border-radius: 30px;
+  box-shadow: 30px 20px 10px -10px black;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 15px;
+  margin-bottom: 15px;
+  height: 500px;
+  border-radius: 30px;
 }
 
-.Btn-card{
-    border-radius: 20px;
-    
+.Btn-card {
+  border-radius: 20px;
 }
 
-.Border-all{
-    border-radius: 20px;
+.Border-all {
+  border-radius: 20px;
 }
 
-.Up-card{
-    margin-top: -30px;
+.Up-card {
+  margin-top: -30px;
 }
+
+.modal-style {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 150px;
+  margin-bottom: 15px;
+  height: 300px;
+  box-shadow: 0px 20px 100px -10px black;
+}
+
+.From-alumno{
+  width: 1000px;
+  background: #24303c;
+  padding: -20px;
+  margin: auto;
+  margin-top: 20px;
+  border-radius: 10px;
+  font-family: 'calibri';
+  color: rgb(0, 0, 0);
+  box-shadow: 7px 13px 37px #000;
+}
+
+/* .containe-card{
+  width: 2000px;
+  background: #ffffff;
+  padding: -20px;
+  margin: auto;
+  margin-top: 20px;
+} */

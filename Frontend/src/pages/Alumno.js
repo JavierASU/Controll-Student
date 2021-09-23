@@ -73,17 +73,17 @@ export default class Alumno extends Component {
 
   render() {
     return (
-      <div>
-        <Container>
+      <div >
+        <Container className="From-alumno">
           <h1 className="text-black text-center">Menu de Alumnos</h1>
 
           <Row className="mt-4 ">
             <Col>
-              <Card>
+              <Card >
                 <Card.Header className="text-center">
                   <h3>Crear Nuevo Alumno</h3>
                 </Card.Header>
-                <Card.Body>
+                <Card.Body className="containe-card">
                   <Form onSubmit={this.onSubmit}>
                     <h4 className="text-balck text-center">
                       Seleccione una Grado
@@ -207,8 +207,8 @@ export default class Alumno extends Component {
                         <Button variant="outline-success" onClick={this.openModal} size="lg" >
                           Guardar
                         </Button>
-                        <Modal show={this.state.Open} onHide={this.openModal}>
-                          <Modal.Header closeButton>
+                        <Modal show={this.state.Open} onHide={this.openModal} className="modal-style">
+                          <Modal.Header closeButton >
                             <h2 className="text-danger">Seguro de los Datos?</h2>
                           </Modal.Header>
                           <Modal.Body>

@@ -23,8 +23,8 @@ export default class Home extends Component {
                             <Card className="col-md-10 bg-dark Fond-Card Up-card" >
                                 <img src={IMGSC} alt="" className="Card-Front"/>
                                 <Card.Body>
-                                    <h4 className="card-tittle text-light">Gestion de Alumnos</h4>
-                                    <p className="card-text text-secondary text-light">Podras ver y crear tus secciones creadas catidad de alumnos y datos</p>
+                                    <h4 className="card-tittle text-light">Gestion de Estudiantes</h4>
+                                    <p className="card-text text-secondary text-light">Podras ver y crear secciones, grados, estudiantes</p>
                                     <div className="btn-group-vertical">
                                         <a href="/seccion" className="btn btn-outline-secondary text-light Btn-card">
                                             Crear Secciones</a>
@@ -44,7 +44,7 @@ export default class Home extends Component {
                                 <img src={IMGSC1} alt="" className="Card-Front"/>
                                 <Card.Body>
                                     <h4 className="card-tittle text-light">Informacion</h4>
-                                    <p className="card-text text-secondary text-light">Podras ver la informacion de alumnos,secciones y grados</p>
+                                    <p className="card-text text-secondary text-light">Podras ver la informacion de estudiantes secciones y grados</p>
                                     <a href="/inf" className="btn btn-outline-secondary text-light Btn-card">
                                         Ir a Informacion </a>
 
