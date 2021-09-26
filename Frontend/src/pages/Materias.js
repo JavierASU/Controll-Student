@@ -13,17 +13,25 @@ import axios from "axios";
 export default class Materias extends Component {
   state = {
     materias: [],
+    grados: [],
     materia: "",
   };
   //peticion al back para traer todos los grados
   async componentDidMount() {
     this.getMaterias();
+    this.getGrados();
   }
 
   //meto para usar la misma funcion en varios lados
   getMaterias = async () => {
     const res = await axios.get("http://localhost:4000/materias");
     this.setState({ materias: res.data });
+  };
+
+  //meto para usar la misma funcion en varios lados
+  getGrados = async () => {
+    const res = await axios.get("http://localhost:4000/grados");
+    this.setState({ grados: res.data });
   };
 
   //metodo que escucha lo que escribes
@@ -37,7 +45,9 @@ export default class Materias extends Component {
     e.preventDefault();
     await axios.post("http://localhost:4000/materias", {
       materia: this.state.materia,
+      grado_id: this.state.grado,
     });
+
     //establece el input a estado 0
     this.setState({ materia: "" });
     //refresca la pagina
@@ -48,6 +58,13 @@ export default class Materias extends Component {
     await axios.delete("http://localhost:4000/materias/" + id);
     this.getMaterias();
     console.log(id);
+  };
+
+  onImputChange = (e) => {
+    console.log(e.target.value);
+    this.setState({
+      [e.target.name]: e.target.value,
+    });
   };
 
   render() {
@@ -67,6 +84,25 @@ export default class Materias extends Component {
                     value={this.state.materia}
                     onChange={this.onChangeMateria}
                   ></input>
+
+                  <select
+                    className="form-control mt-4 mb-4 bg-dark text-light Border-all"
+                    name="grado"
+                    onChange={this.onImputChange}
+                  >
+                    <option value={null}>Seleccionar un grado..</option>
+
+                    {this.state.grados.length ? (
+                      this.state.grados.map((g) => (
+                        <option key={g.grado_id} value={g.grado_id}>
+                          {g.grado}
+                        </option>
+                      ))
+                    ) : (
+                      <option></option>
+                    )}
+                  </select>
+
                   <button type="submit" className="btn btn-primary">
                     Guardar
                   </button>
@@ -90,7 +126,9 @@ export default class Materias extends Component {
                             <td>
                               <button
                                 className="btn btn-danger"
-                                onClick={() => this.deleteGrado(materia.materia_id)}
+                                onClick={() =>
+                                  this.deleteGrado(materia.materia_id)
+                                }
                               >
                                 Eliminar
                               </button>
