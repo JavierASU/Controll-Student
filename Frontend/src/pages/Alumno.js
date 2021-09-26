@@ -232,8 +232,3 @@ export default class Alumno extends Component {
     );
   }
 }
-
-
-{/* <button type="submit" className="btn btn-outline-success">
-                        Guardar
-                      </button> */}
