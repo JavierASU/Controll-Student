@@ -29,61 +29,45 @@ export default class Factura extends Component {
 
   render() {
     return (
+
       <div>
-        <Row>
-          <Col>
-            <Card.Header>
-              <Card.Body>
-                <Card>
-                  <Container>
-                    <Row>
-                      <Col><h10>UNIDAD EDUCATIVA PRIVADA
-                        TERESA CARREÑO, C.A.</h10><hr />Inscrito en el MPPE PD01370513 </Col>
-                      <Col><h10> Calle Piar 
-                        N°71-11-Centro 
-                        Cagua.Aragua 
-                        Telefono:0244-414.08.63/RIF.J-40781620-4<hr /><h5>FACTURA N°0</h5>
-                      </h10></Col>
-                    </Row>
-                  </Container>
+        <div className="grid-container fact-li">
 
-                </Card>
+          <div className="item-1">
+            <h4>UNIDAD EDUCATIVA PRIVADA TERESA CARREÑO , C.A.</h4>
+            <h5>INSCRITO EN EL MPPE PD01370513</h5>
+          </div>
 
-                <Card>
-                  <Card.Body>
-                    <Container>
-                      <Form>
-                      <Row>
-                        <Col>Razon Social:</Col> 
-                        <Col>Datos que tiene que llenar con get alumno</Col>
-                        <Col>Fecha:</Col>
-                      </Row>
-                      <br></br>
-                      <br></br>
-                      <Row>
-                        <Col>Domicilo Fiscal:</Col>
-                        <Col>Rif/C.I.N°:</Col>
-                        <Col>Telefono:</Col>
-                      </Row>
-                      <br></br>
-                      <br></br>
-                      <Row>
-                        <Col>Inscripcion:</Col>
-                        <Col>Concepto:</Col>
-                        <Col>Monto:</Col>
-    
-                        
-                      </Row>
-                      </Form>
-                    </Container>
 
-                  </Card.Body>
-                </Card>
 
-              </Card.Body>
-            </Card.Header>
-          </Col>
-        </Row>
+          <div className="item-2">
+            <h5>Calle Piar n°72-11-centro Cagua Edo-Aragua</h5>
+            <h6>telefono:0244-414-08-63/ RF:J40781620-4</h6>
+            <div className="text-item-2">Factura N°</div>
+          </div>
+
+
+
+
+
+
+
+
+        </div>
+
+        <Container className="item-3" >
+          <div className="div-1">
+            Razon Social:
+          </div>
+
+          <div className="div-2">
+            cagua, 
+          </div>
+
+          <div></div>
+
+
+        </Container>
       </div>
 
     )

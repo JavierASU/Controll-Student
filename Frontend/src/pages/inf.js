@@ -17,7 +17,7 @@ export default class Secciones extends Component {
     alumnos: [],
 
 
-    filtro: [],
+    filtros: [],
     search: ""
 
   };
@@ -36,12 +36,14 @@ export default class Secciones extends Component {
   }
 
   getFill = async (cedula) => {
-    const res = await axios.get("http://localhost:4000/alumno/filtro/" + cedula)
-    this.setState({ filtro: res.data })
-
+    const res = await axios.get("http://localhost:4000/alumno/filtro/" + "")
+    this.setState({ fill: res.data })
 
     console.log(cedula)
   }
+
+
+
 
   onImputChange = (e) => {
     console.log(e.target.value);
@@ -55,6 +57,7 @@ export default class Secciones extends Component {
     this.getInf()
     console.log(id);
   };
+
 
   render() {
     return (
@@ -73,7 +76,7 @@ export default class Secciones extends Component {
                   placeholder="Busqueda"
                   onChange={this.onImputChange}
                   name="search"
-                  
+                  onSubmit={()=>this.getFill()}
                 />
               </div>
               <Row className="mt-4">
@@ -98,26 +101,26 @@ export default class Secciones extends Component {
                         </tr>
                       </thead>
                       <tbody>
-                        {this.state.filtro.length ? (
-                          this.state.filtro.filter((alumno) => {
+                        {this.state.filtros.length ? (
+                          this.state.filtros.map((fill) => {
                             return (
-                              <tr key={alumno.cedula}>
-                                <td>{alumno.cedula}</td>
-                                <td>{alumno.primerN}</td>
-                                <td>{alumno.segundoN}</td>
-                                <td>{alumno.primerA}</td>
-                                <td>{alumno.segundoA}</td>
-                                <td>{alumno.sexo}</td>
-                                <td>{alumno.fechaDN}</td>
-                                <td>{alumno.seccion}</td>
-                                <td>{alumno.grado}</td>
+                              <tr key={fill.cedula}>
+                                <td>{fill.cedula}</td>
+                                <td>{fill.primerN}</td>
+                                <td>{fill.segundoN}</td>
+                                <td>{fill.primerA}</td>
+                                <td>{fill.segundoA}</td>
+                                <td>{fill.sexo}</td>
+                                <td>{fill.fechaDN}</td>
+                                <td>{fill.seccion}</td>
+                                <td>{fill.grado}</td>
                                 <td>
-                                  <a href={"/alumno/" + alumno.alumno_id} className="btn btn-outline-warning">
+                                  <a href={"/alumno/" + fill.alumno_id} className="btn btn-outline-warning">
                                     Editar </a>
                                   <button
                                     className="btn btn-outline-danger"
                                     onClick={() =>
-                                      this.deleteInf(alumno.alumno_id)
+                                      this.deleteInf(fill.alumno_id)
                                     }
                                   >
                                     Eliminar

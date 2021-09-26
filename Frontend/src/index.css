@@ -11,7 +11,6 @@ body {
   height: 200px;
   box-shadow: 30px 20px 10px 0 black;
   border-radius: 20px;
-  
 }
 
 .Fond-Card {
@@ -45,23 +44,23 @@ body {
   margin-bottom: 15px;
   height: 300px;
   box-shadow: 0px 20px 100px -10px black;
-  border-radius:50px;
-  font-family: 'calibri';
+  border-radius: 50px;
+  font-family: "calibri";
 }
 
-.From-alumno{
+.From-alumno {
   width: 800px;
   background: #9dd8f373;
   padding: -20px;
   margin: auto;
   margin-top: 20px;
   border-radius: 10px;
-  font-family: 'calibri';
+  font-family: "calibri";
   color: rgb(0, 0, 0);
   box-shadow: 7px 13px 37px rgb(97, 86, 252);
 }
 
-.containe-card{
+.containe-card {
   width: 600px;
   background: #ffffff;
   padding: -20px;
@@ -69,12 +68,60 @@ body {
   margin-top: 20px;
 }
 
-.div-container{
+.div-container {
   border-radius: 25px;
-  
 }
 
-.fuente-fuente{
-  font-family: 'serif';
+.fuente-fuente {
+  font-family: "serif";
   font-weight: 90;
+}
+
+.grid-container {
+  display: grid;
+  grid-template-columns: 35% 35%;
+}
+
+.grid-container div {
+  border: 1px solid gray;
+}
+
+.fact-li {
+  margin-top: 100px;
+  width: 77%;
+  margin-left: 300px;
+}
+
+.item-1 {
+  grid-column: 1/2;
+}
+
+.item-2 {
+  grid-template-columns: repeat(2, 1fr);
+  width: 370px;
+}
+
+.text-item-2 {
+  text-align: center;
+}
+
+.item-3 {
+  width: 54%;
+  margin-left: 300px;
+  border: 1px solid gray;
+}
+
+.div-1{
+  width: 14%;
+  border: 1px solid gray;
+  margin-left: 10px;
+  margin-top: 10px;
+}
+
+.div-2{
+  width: 14%;
+  border: 1px solid gray;
+  margin-left: 450px;
+  margin-top: -26px;
+  margin-bottom: 10px;
 }

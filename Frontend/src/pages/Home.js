@@ -33,7 +33,7 @@ export default class Home extends Component {
                                         <a href="/materias" className="btn btn-outline-secondary text-light Btn-card fuente-fuente">
                                             Crear Materias</a>
                                         <a href="/alumno" className="btn btn-outline-secondary text-light Btn-card fuente-fuente">
-                                            Crear Alumnos </a>
+                                            Crear Estudiantes </a>
                                     </div>
                                 </Card.Body>
                             </Card>
