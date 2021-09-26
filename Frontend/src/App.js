@@ -32,7 +32,7 @@ export default class App extends Component {
           <Route exact path="/" component={Home} />
           <Route exact path="/seccion" component={Seccion} />
           <Route exact path="/alumno" component={Alumno} />
-          <Route exact path= "/alumno/:id" component={Alumno} />
+          <Route path= "/alumno/:id" component={Alumno} />
           <Route exact path="/grados" component={Grados} />
           <Route exact path="/materias" component={Materias} />
           <Route exact path="/inf" component={Inf} />

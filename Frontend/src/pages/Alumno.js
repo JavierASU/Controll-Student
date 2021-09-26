@@ -1,5 +1,14 @@
 import React, { Component } from "react";
-import { Container, Col, Row, Form, Table, Card, Button, Modal } from "react-bootstrap";
+import {
+  Container,
+  Col,
+  Row,
+  Form,
+  Table,
+  Card,
+  Button,
+  Modal,
+} from "react-bootstrap";
 import axios from "axios";
 
 export default class Alumno extends Component {
@@ -7,7 +16,6 @@ export default class Alumno extends Component {
     allSecciones: [],
     grados: [],
     seccionesPorGrado: [],
-
     cedula: "",
     primerN: "",
     segundoN: "",
@@ -16,9 +24,7 @@ export default class Alumno extends Component {
     sexo: "",
     fechaDN: "",
     seccion_id: "",
-
     Open: false,
-
   };
 
   async componentDidMount() {
@@ -31,7 +37,6 @@ export default class Alumno extends Component {
       allSecciones: secciones.data,
       grados: grados.data,
     });
-
   }
 
   onSubmit = async (e) => {
@@ -45,10 +50,9 @@ export default class Alumno extends Component {
       sexo: this.state.sexo,
       fechaDN: this.state.fechaDN,
       seccion_id: this.state.seccion_id,
-
     };
     const res = await axios.post("http://localhost:4000/alumno", alumno);
-    window.location.href = '/alumno'
+    window.location.href = "/alumno";
   };
 
   onImputChange = (e) => {
@@ -60,26 +64,29 @@ export default class Alumno extends Component {
 
   onChangeGrado = async (e) => {
     let grado_id = e.target.value;
-    const secciones = this.state.allSecciones.filter(s => parseInt(s.grado_id) === parseInt(grado_id));
+    const secciones = this.state.allSecciones.filter(
+      (s) => parseInt(s.grado_id) === parseInt(grado_id)
+    );
     this.setState({
       seccionesPorGrado: secciones,
     });
   };
 
   openModal = async () => {
-    this.setState({Open: !this.state.Open})
-    }
-
+    this.setState({ Open: !this.state.Open });
+  };
 
   render() {
     return (
-      <div >
+      <div>
         <Container className="From-alumno">
-          <h1 className="text-black text-center fuente-fuente">Menu de Alumnos</h1>
+          <h1 className="text-black text-center fuente-fuente">
+            Menu de Alumnos
+          </h1>
 
           <Row className="mt-4 ">
             <Col>
-              <Card className="card-card" >
+              <Card className="card-card">
                 <Card.Header className="text-center fuente-fuente">
                   <h3>Crear Nuevo Alumno</h3>
                 </Card.Header>
@@ -203,21 +210,42 @@ export default class Alumno extends Component {
                         name="fechaDN"
                       />
                       <div className="d-grid gap-2">
-
-                        <Button variant="outline-success div-container fuente-fuente" onClick={this.openModal} size="lg" >
+                        <Button
+                          variant="outline-success div-container fuente-fuente"
+                          onClick={this.openModal}
+                          size="lg"
+                        >
                           Guardar
                         </Button>
-                        <Modal show={this.state.Open} onHide={this.openModal} className="modal-style">
-                          <Modal.Header closeButton >
-                            <h2 className="text-danger fuente-fuente">CONFIRMACION DE DATOS</h2>
+                        <Modal
+                          show={this.state.Open}
+                          onHide={this.openModal}
+                          className="modal-style"
+                        >
+                          <Modal.Header closeButton>
+                            <h2 className="text-danger fuente-fuente">
+                              CONFIRMACION DE DATOS
+                            </h2>
                           </Modal.Header>
                           <Modal.Body className="fuente-fuente Border-all">
-                            UNA VES CREADO EL ESTUDIANTE LOS DATOS SERAN GUARDADOS, SI HUBO ERROR DEBERAR BORRAR
-                            Y CREAR DE NUEVO EL ESTUDIANTE.
+                            UNA VES CREADO EL ESTUDIANTE LOS DATOS SERAN
+                            GUARDADOS, SI HUBO ERROR DEBERAR BORRAR Y CREAR DE
+                            NUEVO EL ESTUDIANTE.
                           </Modal.Body>
                           <Modal.Footer>
-                            <Button variant="outline-success fuente-fuente"onClick={this.onSubmit}>Guardar</Button>
-                            <Button variant="outline-danger fuente-fuente" onClick={this.openModal} > Cancelar</Button>
+                            <Button
+                              variant="outline-success fuente-fuente"
+                              onClick={this.onSubmit}
+                            >
+                              Guardar
+                            </Button>
+                            <Button
+                              variant="outline-danger fuente-fuente"
+                              onClick={this.openModal}
+                            >
+                              {" "}
+                              Cancelar
+                            </Button>
                           </Modal.Footer>
                         </Modal>
                       </div>

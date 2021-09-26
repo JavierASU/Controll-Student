@@ -10,40 +10,35 @@ import {
   Link,
 } from "react-bootstrap";
 import axios from "axios";
-
+import { UpdateAlumno } from "../components/alumnos/UpdateAlumno";
 
 export default class Secciones extends Component {
   state = {
     alumnos: [],
 
-
     filtros: [],
-    search: ""
-
+    search: "",
   };
 
   async componentDidMount() {
-    this.getInf()
-    this.getFill()
-
+    this.getInf();
+    this.getFill();
   }
 
   getInf = async () => {
     const res = await axios.get("http://localhost:4000/alumno");
     this.setState({ alumnos: res.data });
     console.log(res.data);
-
-  }
+  };
 
   getFill = async (cedula) => {
-    const res = await axios.get("http://localhost:4000/alumno/filtro/" + "")
-    this.setState({ fill: res.data })
+    const res = await axios.get(
+      "http://localhost:4000/alumno/filtro/" + this.state.search
+    );
+    this.setState({ filtros: res.data });
 
-    console.log(cedula)
-  }
-
-
-
+    console.log(cedula);
+  };
 
   onImputChange = (e) => {
     console.log(e.target.value);
@@ -54,10 +49,9 @@ export default class Secciones extends Component {
 
   deleteInf = async (id) => {
     await axios.delete("http://localhost:4000/alumno/" + id);
-    this.getInf()
+    this.getInf();
     console.log(id);
   };
-
 
   render() {
     return (
@@ -66,8 +60,12 @@ export default class Secciones extends Component {
 
         <Container>
           <Row>
-            <Form>
-
+            <Form
+              onSubmit={(e) => {
+                e.preventDefault();
+                this.getFill();
+              }}
+            >
               <div className="form-search">
                 <input
                   type="text "
@@ -76,73 +74,76 @@ export default class Secciones extends Component {
                   placeholder="Busqueda"
                   onChange={this.onImputChange}
                   name="search"
-                  onSubmit={()=>this.getFill()}
                 />
               </div>
-              <Row className="mt-4">
-                <Col>
-                  <Card>
-                    <Card.Header className="text-center">
-                      <h3>Datos</h3>
-                    </Card.Header>
-                    <Table>
-                      <thead>
-                        <tr>
-                          <th>Cedula</th>
-                          <th>Primer Nombre</th>
-                          <th>Segundo Nombre</th>
-                          <th>Primer Apellido</th>
-                          <th>Segundo Apellido</th>
-                          <th>Sexo</th>
-                          <th>Fecha</th>
-                          <th>Seccion</th>
-                          <th>Grado</th>
-                          <th>Opciones</th>
-                        </tr>
-                      </thead>
-                      <tbody>
-                        {this.state.filtros.length ? (
-                          this.state.filtros.map((fill) => {
-                            return (
-                              <tr key={fill.cedula}>
-                                <td>{fill.cedula}</td>
-                                <td>{fill.primerN}</td>
-                                <td>{fill.segundoN}</td>
-                                <td>{fill.primerA}</td>
-                                <td>{fill.segundoA}</td>
-                                <td>{fill.sexo}</td>
-                                <td>{fill.fechaDN}</td>
-                                <td>{fill.seccion}</td>
-                                <td>{fill.grado}</td>
-                                <td>
-                                  <a href={"/alumno/" + fill.alumno_id} className="btn btn-outline-warning">
-                                    Editar </a>
-                                  <button
-                                    className="btn btn-outline-danger"
-                                    onClick={() =>
-                                      this.deleteInf(fill.alumno_id)
-                                    }
-                                  >
-                                    Eliminar
-                                  </button>
-                                </td>
-                              </tr>
-                            );
-                          })
-                        ) : (
-                          <tr>
-                            <td colSpan="8" className="text-center">
-                              Realice la busqueda por cedula
-                            </td>
-                          </tr>
-                        )}
-                      </tbody>
-                    </Table>
-                  </Card>
-                </Col>
-              </Row>
-
+              <Button type="submit">Buscar</Button>
             </Form>
+
+            <Row className="mt-4">
+              <Col>
+                <Card>
+                  <Card.Header className="text-center">
+                    <h3>Datos</h3>
+                  </Card.Header>
+                  <Table>
+                    <thead>
+                      <tr>
+                        <th>Cedula</th>
+                        <th>Primer Nombre</th>
+                        <th>Segundo Nombre</th>
+                        <th>Primer Apellido</th>
+                        <th>Segundo Apellido</th>
+                        <th>Sexo</th>
+                        <th>Fecha</th>
+                        <th>Seccion</th>
+                        <th>Grado</th>
+                        <th>Opciones</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      {this.state.filtros.length ? (
+                        this.state.filtros.map((fill) => {
+                          return (
+                            <tr key={fill.cedula}>
+                              <td>{fill.cedula}</td>
+                              <td>{fill.primerN}</td>
+                              <td>{fill.segundoN}</td>
+                              <td>{fill.primerA}</td>
+                              <td>{fill.segundoA}</td>
+                              <td>{fill.sexo}</td>
+                              <td>{fill.fechaDN}</td>
+                              <td>{fill.seccion}</td>
+                              <td>{fill.grado}</td>
+                              <td>
+                                {/* <a
+                                  href={"/alumno/" + fill.alumno_id}
+                                  className="btn btn-outline-warning"
+                                >
+                                  Editar{" "}
+                                </a> */}
+                                <UpdateAlumno fill={fill}/>
+                                <button
+                                  className="btn btn-outline-danger"
+                                  onClick={() => this.deleteInf(fill.alumno_id)}
+                                >
+                                  Eliminar
+                                </button>
+                              </td>
+                            </tr>
+                          );
+                        })
+                      ) : (
+                        <tr>
+                          <td colSpan="8" className="text-center">
+                            Realice la busqueda por cedula
+                          </td>
+                        </tr>
+                      )}
+                    </tbody>
+                  </Table>
+                </Card>
+              </Col>
+            </Row>
           </Row>
 
           <Row className="mt-4">
@@ -181,13 +182,15 @@ export default class Secciones extends Component {
                             <td className="fuente-fuente">{alumno.seccion}</td>
                             <td className="fuente-fuente">{alumno.grado}</td>
                             <td>
-                              <a href={"/alumno/" + alumno.alumno_id} className="btn btn-outline-warning fuente-fuente">
-                                Editar </a>
+                              <a
+                                href={"/alumno/" + alumno.alumno_id}
+                                className="btn btn-outline-warning fuente-fuente"
+                              >
+                                Editar{" "}
+                              </a>
                               <button
                                 className="btn btn-outline-danger fuente-fuente"
-                                onClick={() =>
-                                  this.deleteInf(alumno.alumno_id)
-                                }
+                                onClick={() => this.deleteInf(alumno.alumno_id)}
                               >
                                 Eliminar
                               </button>
