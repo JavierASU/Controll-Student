@@ -6,7 +6,6 @@ import {
   Form,
   Table,
   Card,
-  Button,
 } from "react-bootstrap";
 import axios from "axios";
 
@@ -45,7 +44,7 @@ export default class Secciones extends Component {
       grado_id: this.state.grado,
     });
     //establece el input a estado 0
-    this.setState({ seccion: ""});
+    this.setState({ seccion: "" });
     //refresca la pagina
     this.getSeccion();
   };

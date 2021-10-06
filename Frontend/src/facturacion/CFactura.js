@@ -11,11 +11,9 @@ import {
 } from "react-bootstrap";
 import axios from "axios";
 
+
 export default class CFactura extends Component {
   state = {
-    factura: [],
-    fact: "",
-
     razonS: "",
     domicilioF: "",
     Rif: "",
@@ -28,10 +26,10 @@ export default class CFactura extends Component {
     Open: false,
   };
 
-  getFc = async () => {
-    const fc = await axios.get("");
-  };
+  async componentDidMount() {
 
+
+  }
   onImputChange = (e) => {
     console.log(e.target.value);
     this.setState({
@@ -59,41 +57,40 @@ export default class CFactura extends Component {
     this.setState({ Open: !this.state.Open });
   };
 
-  onChangeRif = (e)=>{
-      let Rif = e.target.value;
+  onChangeRif = (e) => {
+    let Rif = e.target.value;
 
-      //Peticion para consultar RIF
-     // const validaRif = axios.get(http://localhost:4000/facturacion/1234)
+    //Peticion para consultar RIF
+    // const validaRif = axios.get(http://localhost:4000/facturacion/1234)
 
-      //Valida si el rif existe
-      /**
-       * if(validaRif.data.lengt){
-      Si el rif existe, rellenar los datos de los input guardando los valores
-      capturados en el estado
-       
-      * this.setState({
-       *  razonS: this.state.razonS,
-        domicilioF: this.state.domicilioF,
-        Rif: this.state.Rif,
-        telefono: this.state.telefono
-       * })
-       * }else{
-        Sino existe, solamente guardar el rif en el estado
-       * this.setState({
-       * 
-        Rif: this.state.Rif,
-       * })
-       * }
-       * 
-       */
-
-  }
+    //Valida si el rif existe
+    /**
+     * if(validaRif.data.lengt){
+    Si el rif existe, rellenar los datos de los input guardando los valores
+    capturados en el estado
+     
+    * this.setState({
+     *  razonS: this.state.razonS,
+      domicilioF: this.state.domicilioF,
+      Rif: this.state.Rif,
+      telefono: this.state.telefono
+     * })
+     * }else{
+      Sino existe, solamente guardar el rif en el estado
+     * this.setState({
+     * 
+      Rif: this.state.Rif,
+     * })
+     * }
+     * 
+     */
+  };
 
   render() {
     return (
       <div>
         <Container>
-          <div className="d-grid gap-2">
+          <div className="d-grid gap-2 fact-button">
             <Button variant="outline-success" onClick={this.openModal}>
               <h3>Crear Nueva Factura</h3>
             </Button>

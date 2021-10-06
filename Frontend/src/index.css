@@ -87,9 +87,9 @@ body {
 }
 
 .fact-li {
-  margin-top: 100px;
   width: 77%;
-  margin-left: 300px;
+  margin: auto;
+  
 }
 
 .item-1 {
@@ -111,17 +111,61 @@ body {
   border: 1px solid gray;
 }
 
-.div-1{
+.div-1 {
   width: 14%;
   border: 1px solid gray;
   margin-left: 10px;
   margin-top: 10px;
 }
 
-.div-2{
+.div-2 {
   width: 14%;
   border: 1px solid gray;
   margin-left: 450px;
   margin-top: -26px;
   margin-bottom: 10px;
+}
+
+.fact-button {
+  width: 30%;
+}
+
+
+.fact-table{
+  width: 30%;
+}
+
+.grid-container1{
+  display: grid;
+  width: 671px;
+  border: 1px solid gray;
+  margin-left: 128px;
+}
+
+.fac-line1{
+  margin-left: 10px;
+  margin-top: 10px;
+}
+
+.fac-line2{
+  margin-left: 350px;
+  margin-top: -40px;
+}
+
+.fac-line3{
+  margin-left: 480px;
+  margin-top: -40px;
+}
+
+.fac-line4{
+  margin-left: 10px;
+}
+
+.fac-line5{
+  margin-left: 10px;
+}
+
+.fac-line6{
+  margin-left: 200px;
+  margin-top: -40px;
 }

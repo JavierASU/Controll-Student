@@ -7,11 +7,16 @@ const pool = require("../database");
 const GetALL = router.get("/alumno", (req, res) => {
   pool.query(
     `
-    select alumno_id, cedula, primerN,segundoN, primerA,segundoA, sexo, fechaDN, seccion.seccion_id,seccion, grado.grado_id, grado from alumno
+    select alumno_id, cedula, primerN,segundoN, primerA,segundoA, sexo, fechaDN, seccion.seccion_id,seccion, grado.grado_id, grado, materias.materia_id, materia from alumno
+    
     join seccion
-    on seccion.seccion_id=alumno.seccion_id
+    on seccion.seccion_id = alumno.seccion_id
+    
     join grado
-    on grado.grado_id = seccion.grado_id;
+    on grado.grado_id = seccion.grado_id
+    
+    join materias
+    on materias.materia_id = materias.materia_id
   `,
     (err, rows, fields) => {
       if (!err) {
@@ -29,11 +34,16 @@ const GetOne = router.get("/alumno/:id", async (req, res) => {
   console.log(id);
   await pool.query(
     `
-    select alumno_id, cedula, primerN,segundoN, primerA,segundoA, sexo, fechaDN, seccion.seccion_id,seccion, grado.grado_id, grado from alumno
+    select alumno_id, cedula, primerN,segundoN, primerA,segundoA, sexo, fechaDN, seccion.seccion_id,seccion, grado.grado_id, grado, materias.materia_id, materia from alumno
+    
     join seccion
-    on seccion.seccion_id=alumno.seccion_id
+    on seccion.seccion_id = alumno.seccion_id
+    
     join grado
     on grado.grado_id = seccion.grado_id
+    
+    join materias
+    on materias.materia_id = materias.materia_id
     WHERE alumno_id = ?`,
     [id],
     (err, rows, fields) => {
@@ -46,17 +56,21 @@ const GetOne = router.get("/alumno/:id", async (req, res) => {
   );
 });
 
-
 //Get por filtro de cedila
 const GetForFilter = router.get("/alumno/filtro/:cedula", async (req, res) => {
   const { cedula } = req.params;
 
   await pool.query(
-    `select alumno_id, cedula, primerN,segundoN, primerA,segundoA, sexo, fechaDN, seccion.seccion_id,seccion, grado.grado_id, grado from alumno
+    `select alumno_id, cedula, primerN,segundoN, primerA,segundoA, sexo, fechaDN, seccion.seccion_id,seccion, grado.grado_id, grado, materias.materia_id, materia from alumno
+    
     join seccion
-    on seccion.seccion_id=alumno.seccion_id
+    on seccion.seccion_id = alumno.seccion_id
+    
     join grado
     on grado.grado_id = seccion.grado_id
+    
+    join materias
+    on materias.materia_id = materias.materia_id
     WHERE cedula like '${cedula}%'`,
     (err, rows, fields) => {
       if (!err) {
@@ -163,4 +177,4 @@ const EditAL = router.put("/alumno", async (req, res) => {
     }
   );
 });
-module.exports = { GetALL, PostAL, GetOne, DeleteAl, EditAL,GetForFilter };
+module.exports = { GetALL, PostAL, GetOne, DeleteAl, EditAL, GetForFilter };

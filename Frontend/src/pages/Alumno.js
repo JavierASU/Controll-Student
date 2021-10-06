@@ -16,6 +16,7 @@ export default class Alumno extends Component {
     allSecciones: [],
     grados: [],
     seccionesPorGrado: [],
+    materiasPorgrado: [],
     cedula: "",
     primerN: "",
     segundoN: "",
@@ -63,6 +64,7 @@ export default class Alumno extends Component {
   };
 
   onChangeGrado = async (e) => {
+    
     let grado_id = e.target.value;
     const secciones = this.state.allSecciones.filter(
       (s) => parseInt(s.grado_id) === parseInt(grado_id)
@@ -70,6 +72,8 @@ export default class Alumno extends Component {
     this.setState({
       seccionesPorGrado: secciones,
     });
+
+    console.log(secciones);
   };
 
   openModal = async () => {

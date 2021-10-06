@@ -6,8 +6,10 @@ import Alumno from "./pages/Alumno"
 import Grados from "./pages/Grados";
 import Materias from "./pages/Materias";
 import Inf from "./pages/inf";
-import Factura from "./pages/Factura";
-import CFactura from "./pages/CFactura";
+import Factura from "../src/facturacion/Factura";
+import CFactura from "../src/facturacion/CFactura";
+import Infactura from "./facturacion/infFactura";
+
 
 import { Navbar, Container, Nav } from "react-bootstrap";
 
@@ -17,7 +19,7 @@ export default class App extends Component {
       <div className="App">
         <Navbar bg="dark" variant="dark" expand="lg">
           <Container>
-            <Navbar.Brand href="#home" className="fuente-fuente">Control de Alumnos</Navbar.Brand>
+            <Navbar.Brand href="#home" className="fuente-fuente">Control de Estudiantes</Navbar.Brand>
             <Navbar.Toggle aria-controls="basic-navbar-nav" />
             <Navbar.Collapse id="basic-navbar-nav">
               <Nav className="me-auto">
@@ -32,12 +34,15 @@ export default class App extends Component {
           <Route exact path="/" component={Home} />
           <Route exact path="/seccion" component={Seccion} />
           <Route exact path="/alumno" component={Alumno} />
-          <Route path= "/alumno/:id" component={Alumno} />
+          <Route path="/alumno/:id" component={Alumno} />
           <Route exact path="/grados" component={Grados} />
           <Route exact path="/materias" component={Materias} />
           <Route exact path="/inf" component={Inf} />
-          <Route exact path="/factura"component={Factura}/>
-          <Route exact path="/Cfactura"component={CFactura}/>
+          <Route exact path="/factura" component={Factura} />
+          <Route exact path="/Cfactura" component={CFactura} />
+          <Route exact path="/infactura" component={Infactura} />
+          <Route path="/factura/:id" component={Factura} />
+       
         </Switch>
       </div>
     );

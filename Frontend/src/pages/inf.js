@@ -1,4 +1,4 @@
-import React, { Component, useState, useEffect } from "react";
+import React, { Component } from "react";
 import {
   Container,
   Col,
@@ -7,10 +7,9 @@ import {
   Table,
   Card,
   Button,
-  Link,
 } from "react-bootstrap";
 import axios from "axios";
-import { UpdateAlumno } from "../components/alumnos/UpdateAlumno";
+import { UpdateAlumno } from "../components/UpdateAlumno";
 
 export default class Secciones extends Component {
   state = {
@@ -21,23 +20,15 @@ export default class Secciones extends Component {
   };
 
   async componentDidMount() {
-    this.getInf();
     this.getFill();
   }
-
-  getInf = async () => {
-    const res = await axios.get("http://localhost:4000/alumno");
-    this.setState({ alumnos: res.data });
-    console.log(res.data);
-  };
 
   getFill = async (cedula) => {
     const res = await axios.get(
       "http://localhost:4000/alumno/filtro/" + this.state.search
     );
     this.setState({ filtros: res.data });
-
-    console.log(cedula);
+    console.log(res.data)
   };
 
   onImputChange = (e) => {
@@ -49,7 +40,7 @@ export default class Secciones extends Component {
 
   deleteInf = async (id) => {
     await axios.delete("http://localhost:4000/alumno/" + id);
-    this.getInf();
+    this.getFill();
     console.log(id);
   };
 
@@ -85,19 +76,20 @@ export default class Secciones extends Component {
                   <Card.Header className="text-center">
                     <h3>Datos</h3>
                   </Card.Header>
-                  <Table>
+                  <Table striped bordered hover size="sm">
                     <thead>
                       <tr>
-                        <th>Cedula</th>
-                        <th>Primer Nombre</th>
-                        <th>Segundo Nombre</th>
-                        <th>Primer Apellido</th>
-                        <th>Segundo Apellido</th>
-                        <th>Sexo</th>
-                        <th>Fecha</th>
-                        <th>Seccion</th>
-                        <th>Grado</th>
-                        <th>Opciones</th>
+                        <th className="justyfy">Cedula</th>
+                        <th className="justyfy">Primer Nombre</th>
+                        <th className="justyfy">Segundo Nombre</th>
+                        <th className="justyfy">Primer Apellido</th>
+                        <th className="justyfy">Segundo Apellido</th>
+                        <th className="justyfy">Sexo</th>
+                        <th className="justyfy">Fecha</th>
+                        <th className="justyfy">Seccion</th>
+                        <th className="justyfy">Grado</th>
+                        <th className="justyfy">Materias</th>
+                        <th className="">Opciones</th>
                       </tr>
                     </thead>
                     <tbody>
@@ -114,14 +106,9 @@ export default class Secciones extends Component {
                               <td>{fill.fechaDN}</td>
                               <td>{fill.seccion}</td>
                               <td>{fill.grado}</td>
+                              <td>{fill.materia}</td>
                               <td>
-                                {/* <a
-                                  href={"/alumno/" + fill.alumno_id}
-                                  className="btn btn-outline-warning"
-                                >
-                                  Editar{" "}
-                                </a> */}
-                                <UpdateAlumno fill={fill}/>
+                                <UpdateAlumno fill={fill} />
                                 <button
                                   className="btn btn-outline-danger"
                                   onClick={() => this.deleteInf(fill.alumno_id)}
@@ -144,71 +131,6 @@ export default class Secciones extends Component {
                 </Card>
               </Col>
             </Row>
-          </Row>
-
-          <Row className="mt-4">
-            <Col>
-              <Card>
-                <Card.Header className="text-center">
-                  <h3 className="fuente-fuente">Datos</h3>
-                </Card.Header>
-                <Table>
-                  <thead>
-                    <tr>
-                      <th className="fuente-fuente">Cedula</th>
-                      <th className="fuente-fuente">Primer Nombre</th>
-                      <th className="fuente-fuente">Segundo Nombre</th>
-                      <th className="fuente-fuente">Primer Apellido</th>
-                      <th className="fuente-fuente">Segundo Apellido</th>
-                      <th className="fuente-fuente">Sexo</th>
-                      <th className="fuente-fuente">Fecha</th>
-                      <th className="fuente-fuente">Seccion</th>
-                      <th className="fuente-fuente">Grado</th>
-                      <th className="fuente-fuente">Opciones</th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    {this.state.alumnos.length ? (
-                      this.state.alumnos.map((alumno) => {
-                        return (
-                          <tr key={alumno._id}>
-                            <td className="fuente-fuente">{alumno.cedula}</td>
-                            <td className="fuente-fuente">{alumno.primerN}</td>
-                            <td className="fuente-fuente">{alumno.segundoN}</td>
-                            <td className="fuente-fuente">{alumno.primerA}</td>
-                            <td className="fuente-fuente">{alumno.segundoA}</td>
-                            <td className="fuente-fuente">{alumno.sexo}</td>
-                            <td className="fuente-fuente">{alumno.fechaDN}</td>
-                            <td className="fuente-fuente">{alumno.seccion}</td>
-                            <td className="fuente-fuente">{alumno.grado}</td>
-                            <td>
-                              <a
-                                href={"/alumno/" + alumno.alumno_id}
-                                className="btn btn-outline-warning fuente-fuente"
-                              >
-                                Editar{" "}
-                              </a>
-                              <button
-                                className="btn btn-outline-danger fuente-fuente"
-                                onClick={() => this.deleteInf(alumno.alumno_id)}
-                              >
-                                Eliminar
-                              </button>
-                            </td>
-                          </tr>
-                        );
-                      })
-                    ) : (
-                      <tr>
-                        <td colSpan="8" className="text-center fuente-fuente">
-                          No hay secciones para el año seleccionado
-                        </td>
-                      </tr>
-                    )}
-                  </tbody>
-                </Table>
-              </Card>
-            </Col>
           </Row>
         </Container>
       </div>
